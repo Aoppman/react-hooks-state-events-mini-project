@@ -1,9 +1,18 @@
 import React from "react";
+import Task from "./Task";
+import { v4 as uuidv4 } from "uuid";
 
-function TaskList() {
+function TaskList({ tasks, onDeleteTask, onFilterTask }) {
   return (
     <div className="tasks">
-      {/* display a list of tasks using Task component */}
+      {tasks.map((task) => (
+        <Task
+          onDeleteTask={onDeleteTask}
+          key={uuidv4()}
+          task={task}
+          onFilterTask={onFilterTask}
+        />
+      ))}
     </div>
   );
 }
